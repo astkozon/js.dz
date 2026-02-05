@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор шоколадок</title>
+</head>
+<body>
+    <h1>Сколько шоколадок можно купить?</h1>
+    
+    <div>
+        <label>Денег в кошельке: </label>
+        <input type="number" id="money" placeholder="Рубли">
+    </div>
+    
+    <div>
+        <label>Цена шоколадки: </label>
+        <input type="number" id="price" placeholder="Рубли">
+    </div>
+    
+    <button onclick="calculate()">Рассчитать</button>
+    
+    <div id="result"></div>
+
+    <script>
+        function calculate() {
+            const money = parseFloat(document.getElementById('money').value);
+            const price = parseFloat(document.getElementById('price').value);
+            
+            const chocolates = Math.floor(money / price);
+            const change = money - chocolates * price;
+            
+            document.getElementById('result').innerHTML = 
+                `<h3>Можно купить: ${chocolates} шт.</h3>
+                 <h3>Сдача: ${change.toFixed(2)} руб.</h3>`;
+        }
+    </script>
+</body>
+</html>
